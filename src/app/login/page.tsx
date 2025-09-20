@@ -21,7 +21,7 @@ export default function LoginPage() {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
+              <Input id="email" type="email" placeholder="m@example.com" required defaultValue="admin@truthguard.org" />
             </div>
             <div className="space-y-2">
               <div className="flex items-center">
@@ -30,11 +30,13 @@ export default function LoginPage() {
                   Forgot your password?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" type="password" required defaultValue="password" />
             </div>
-            <Button type="submit" className="w-full">
-              Login
-            </Button>
+            <Link href="/dashboard" className="w-full">
+                <Button type="submit" className="w-full">
+                Login
+                </Button>
+            </Link>
           </div>
         </CardContent>
       </Card>

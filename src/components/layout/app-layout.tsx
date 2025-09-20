@@ -25,7 +25,7 @@ import { TruthGuardLogo } from '@/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const mainNavItems = [
-  { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/analysis', icon: MessageSquareQuote, label: 'Narratives' },
   { href: '/sources', icon: Newspaper, label: 'Sources' },
   { href: '/about', icon: Info, label: 'About' },

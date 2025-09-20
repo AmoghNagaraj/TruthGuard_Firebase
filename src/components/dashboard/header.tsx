@@ -15,6 +15,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SidebarTrigger } from '../ui/sidebar';
 import { Bell, Search } from 'lucide-react';
 import { Input } from '../ui/input';
+import Link from 'next/link';
 
 interface DashboardHeaderProps {
   title: string;
@@ -70,10 +71,14 @@ export default function DashboardHeader({ title, description }: DashboardHeaderP
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/settings">Settings</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/login">Logout</Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>
