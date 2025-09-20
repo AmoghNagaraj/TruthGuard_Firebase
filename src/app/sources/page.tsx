@@ -44,11 +44,11 @@ const trustVariantMap: Record<string, "destructive" | "default" | "secondary"> =
 
 export default function SourcesPage() {
   return (
-    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col h-full bg-background/0 p-4 sm:p-6 lg:p-8">
        <DashboardHeader title="Monitored Sources" description="Manage and review the sources of information being analyzed." />
       <div className="flex-1 space-y-4 mt-6">
         {sources.map((source, index) => (
-            <Card key={index} className={cn("transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in border-l-4", 
+            <Card key={index} className={cn("transition-all duration-300 hover:-translate-y-1 animate-fade-in border-l-4 glass-card", 
                 source.trust === 'Very Low' && 'border-destructive',
                 source.trust === 'Low' && 'border-orange-500',
                 source.trust === 'Medium' && 'border-yellow-500',

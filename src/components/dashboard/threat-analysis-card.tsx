@@ -68,7 +68,7 @@ export default function ThreatAnalysisCard() {
   }
 
   return (
-    <Card className="transition-all duration-300 hover:shadow-lg animate-fade-in border-accent/50" style={{ animationDelay: '300ms' }}>
+    <Card className="transition-all duration-300 hover:shadow-lg animate-fade-in border-accent/50 glass-card" style={{ animationDelay: '300ms' }}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Sparkles className="text-accent" />

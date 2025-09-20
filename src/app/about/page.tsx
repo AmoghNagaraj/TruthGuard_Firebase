@@ -23,11 +23,11 @@ const aboutCards = [
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col h-full bg-background/0 p-4 sm:p-6 lg:p-8">
        <DashboardHeader title="About TruthGuard" description="Learn about our mission to combat misinformation." />
       <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-3 mt-6">
         {aboutCards.map((card, index) => (
-            <Card key={index} className="flex flex-col transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+            <Card key={index} className="flex flex-col transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: `${index * 100}ms` }}>
                 <CardHeader>
                     <div className="flex items-center gap-4">
                         {card.icon}

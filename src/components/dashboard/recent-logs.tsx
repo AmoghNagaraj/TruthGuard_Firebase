@@ -53,7 +53,7 @@ export default function RecentLogs() {
 
   return (
     <>
-      <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
+      <Card className="transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: '200ms' }}>
         <CardHeader>
           <CardTitle>Recent Narratives</CardTitle>
           <CardDescription>

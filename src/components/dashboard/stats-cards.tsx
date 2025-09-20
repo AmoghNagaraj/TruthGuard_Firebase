@@ -12,7 +12,7 @@ export default function StatsCards() {
       {statsCards.map((card, index) => (
         <Card
           key={card.title}
-          className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in"
+          className="transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card"
           style={{ animationDelay: `${index * 100}ms` }}
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

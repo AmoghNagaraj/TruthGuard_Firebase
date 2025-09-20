@@ -27,7 +27,7 @@ const chartConfig = {
 
 export default function EventsOverTimeChart() {
   return (
-    <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
+    <Card className="transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: '100ms' }}>
       <CardHeader>
         <CardTitle>Narrative Activity</CardTitle>
         <CardDescription>Last 7 days by content type</CardDescription>

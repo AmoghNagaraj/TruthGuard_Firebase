@@ -7,13 +7,13 @@ import { User, Bell, AlertTriangle } from "lucide-react";
 
 export default function SettingsPage() {
   return (
-    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col h-full bg-background/0 p-4 sm:p-6 lg:p-8">
        <header className="pb-8 pt-4">
         <h1 className="text-4xl font-bold text-foreground">Settings</h1>
         <p className="text-muted-foreground mt-2">Manage your account and application settings.</p>
       </header>
       <div className="space-y-8 max-w-4xl mx-auto">
-        <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
+        <Card className="transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: '100ms' }}>
             <CardHeader className="flex flex-row items-center gap-4">
                 <User className="w-8 h-8 text-primary" />
                 <div>
@@ -40,7 +40,7 @@ export default function SettingsPage() {
             </CardContent>
         </Card>
         
-        <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
+        <Card className="transition-all duration-300 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: '200ms' }}>
             <CardHeader className="flex flex-row items-center gap-4">
                 <Bell className="w-8 h-8 text-accent" />
                 <div>
@@ -70,7 +70,7 @@ export default function SettingsPage() {
             </CardContent>
         </Card>
 
-        <Card className="border-destructive/50 transition-all duration-300 hover:bg-destructive/5 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '300ms' }}>
+        <Card className="border-destructive/50 transition-all duration-300 hover:bg-destructive/5 hover:-translate-y-1 animate-fade-in glass-card" style={{ animationDelay: '300ms' }}>
             <CardHeader className="flex flex-row items-center gap-4">
                 <AlertTriangle className="w-8 h-8 text-destructive" />
                 <div>

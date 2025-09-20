@@ -7,7 +7,7 @@ import DashboardHeader from "@/components/dashboard/header";
 
 export default function AnalysisPage() {
   return (
-    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col h-full bg-background/0 p-4 sm:p-6 lg:p-8">
       <DashboardHeader title="Narrative Analysis" description="Review detailed analysis of identified narratives." />
       
       <div className="flex items-center gap-4 my-6">
