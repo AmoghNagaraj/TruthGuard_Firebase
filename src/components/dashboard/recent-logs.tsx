@@ -56,7 +56,7 @@ export default function RecentLogs() {
     <>
       <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
         <CardHeader>
-          <CardTitle className="font-headline">Recent Logs</CardTitle>
+          <CardTitle>Recent Logs</CardTitle>
           <CardDescription>
             A summary of the latest security events.
           </CardDescription>
@@ -102,7 +102,7 @@ export default function RecentLogs() {
       <Dialog open={!!selectedLog} onOpenChange={(isOpen) => !isOpen && setSelectedLog(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className="font-headline">Log Details</DialogTitle>
+            <DialogTitle>Log Details</DialogTitle>
             <DialogDescription>
               {selectedLog?.timestamp
                 ? new Date(selectedLog.timestamp).toLocaleString()

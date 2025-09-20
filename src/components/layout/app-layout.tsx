@@ -51,37 +51,37 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <SidebarMenu>
             <SidebarGroup>
               <SidebarGroupLabel>Menu</SidebarGroupLabel>
-                {mainNavItems.map((item) => (
-                  <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton
-                      href={item.href}
-                      isActive={pathname === item.href}
-                      tooltip={{ children: item.label }}
-                    >
-                      <item.icon />
-                      <span>{item.label}</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+              {mainNavItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton
+                    href={item.href}
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                  >
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarGroup>
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
           <SidebarMenu>
-             <SidebarGroup>
+            <SidebarGroup>
               <SidebarGroupLabel>Support</SidebarGroupLabel>
-                {secondaryNavItems.map((item) => (
-                  <SidebarMenuItem key={item.label}>
-                    <SidebarMenuButton
-                      href={item.href}
-                      isActive={pathname === item.href}
-                      tooltip={{ children: item.label }}
-                    >
-                      <item.icon />
-                      <span>{item.label}</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+              {secondaryNavItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton
+                    href={item.href}
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                  >
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarGroup>
           </SidebarMenu>
           <div className="flex w-full items-center gap-3 overflow-hidden rounded-lg p-2 text-left text-sm bg-muted">

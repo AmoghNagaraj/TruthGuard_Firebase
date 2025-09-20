@@ -9,7 +9,7 @@ export default function SettingsPage() {
   return (
     <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
        <header className="pb-8 pt-4">
-        <h1 className="text-4xl font-bold font-headline text-foreground">Settings</h1>
+        <h1 className="text-4xl font-bold text-foreground">Settings</h1>
         <p className="text-muted-foreground mt-2">Manage your account and application settings.</p>
       </header>
       <div className="space-y-8 max-w-4xl mx-auto">
@@ -17,7 +17,7 @@ export default function SettingsPage() {
             <CardHeader className="flex flex-row items-center gap-4">
                 <User className="w-8 h-8 text-primary" />
                 <div>
-                    <CardTitle className="font-headline text-xl">Profile</CardTitle>
+                    <CardTitle className="text-xl">Profile</CardTitle>
                     <CardDescription>Update your personal information.</CardDescription>
                 </div>
             </CardHeader>
@@ -44,7 +44,7 @@ export default function SettingsPage() {
             <CardHeader className="flex flex-row items-center gap-4">
                 <Bell className="w-8 h-8 text-accent" />
                 <div>
-                    <CardTitle className="font-headline text-xl">Notifications</CardTitle>
+                    <CardTitle className="text-xl">Notifications</CardTitle>
                     <CardDescription>Manage how you receive notifications.</CardDescription>
                 </div>
             </CardHeader>
@@ -74,7 +74,7 @@ export default function SettingsPage() {
             <CardHeader className="flex flex-row items-center gap-4">
                 <AlertTriangle className="w-8 h-8 text-destructive" />
                 <div>
-                    <CardTitle className="font-headline text-xl text-destructive">Danger Zone</CardTitle>
+                    <CardTitle className="text-xl text-destructive">Danger Zone</CardTitle>
                     <CardDescription>These actions are permanent and cannot be undone.</CardDescription>
                 </div>
             </CardHeader>

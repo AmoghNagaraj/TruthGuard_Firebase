@@ -46,7 +46,7 @@ export default function AlertsPage() {
   return (
     <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
        <header className="pb-8 pt-4">
-        <h1 className="text-4xl font-bold font-headline text-foreground">Alerts</h1>
+        <h1 className="text-4xl font-bold text-foreground">Alerts</h1>
         <p className="text-muted-foreground mt-2">Active security alerts requiring your attention.</p>
       </header>
       <div className="flex-1 space-y-4">
@@ -61,7 +61,7 @@ export default function AlertsPage() {
                     <div className="mt-1">{alert.icon}</div>
                     <div className="flex-1">
                         <div className="flex justify-between items-center">
-                            <CardTitle className="font-headline text-lg">{alert.title}</CardTitle>
+                            <CardTitle className="text-lg">{alert.title}</CardTitle>
                             <span className="text-xs text-muted-foreground">{alert.timestamp}</span>
                         </div>
                         <CardDescription className="mt-1">{alert.description}</CardDescription>

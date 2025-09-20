@@ -88,7 +88,7 @@ export default function ThreatAnalysisCard() {
   return (
     <Card className="transition-all duration-300 hover:shadow-lg animate-fade-in border-accent/50" style={{ animationDelay: '300ms' }}>
       <CardHeader>
-        <CardTitle className="font-headline flex items-center gap-2">
+        <CardTitle className="flex items-center gap-2">
           <Sparkles className="text-accent" />
           AI Threat Analysis
         </CardTitle>
@@ -176,7 +176,7 @@ export default function ThreatAnalysisCard() {
         )}
         {result && (
           <div className="mt-6 space-y-4 animate-fade-in">
-            <h3 className="font-semibold font-headline text-lg">Analysis Report</h3>
+            <h3 className="font-semibold text-lg">Analysis Report</h3>
             <Separator />
              <div>
                 <div className="mb-2 flex justify-between items-baseline">

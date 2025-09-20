@@ -8,7 +8,7 @@ export default function LogsPage() {
   return (
     <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
       <header className="pb-8 pt-4">
-        <h1 className="text-4xl font-bold font-headline text-foreground">Activity Logs</h1>
+        <h1 className="text-4xl font-bold text-foreground">Activity Logs</h1>
         <p className="text-muted-foreground mt-2">Review detailed security events and system activity.</p>
       </header>
       

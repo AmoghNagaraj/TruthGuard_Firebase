@@ -29,7 +29,7 @@ export default function EventsOverTimeChart() {
   return (
     <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
       <CardHeader>
-        <CardTitle className="font-headline">Events Over Time</CardTitle>
+        <CardTitle>Events Over Time</CardTitle>
         <CardDescription>Last 7 days</CardDescription>
       </CardHeader>
       <CardContent>
