@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,11 +17,17 @@ import { Bell, Search } from 'lucide-react';
 import { Input } from '../ui/input';
 
 export default function DashboardHeader() {
+  const [isClient, setIsClient] = React.useState(false);
   const userAvatar = PlaceHolderImages.find((img) => img.id === 'user-avatar');
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-0">
-      <SidebarTrigger className="sm:hidden" />
+      {isClient && <SidebarTrigger className="sm:hidden" />}
       <div className="relative ml-auto flex-1 md:grow-0">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
