@@ -2,7 +2,6 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import AppLayout from '@/components/layout/app-layout';
 
 export const metadata: Metadata = {
   title: 'TruthGuard',
@@ -26,9 +25,7 @@ export default function RootLayout({
           <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,255,255,0.05),rgba(255,255,255,0))] animate-float1"></div>
           <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,255,255,0.05),rgba(255,255,255,0))] animate-float2"></div>
         </div>
-        <AppLayout>
-          {children}
-        </AppLayout>
+        {children}
         <Toaster />
       </body>
     </html>
