@@ -9,11 +9,12 @@ export default function LoginPage() {
   return (
     <div className="flex items-center justify-center min-h-screen">
        <Card className="mx-auto max-w-sm w-full glass-card animate-fade-in">
-        <CardHeader className="space-y-1 text-center">
-            <div className="flex justify-center">
-                <TruthGuardLogo className="w-16 h-16 text-primary" />
+        <CardHeader className="space-y-2 text-center">
+            <div className="flex flex-col items-center justify-center gap-2">
+                <TruthGuardLogo className="w-12 h-12 text-primary" />
+                <span className="font-headline text-3xl font-bold text-primary">TruthGuard</span>
             </div>
-          <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl font-bold pt-4">Welcome Back</CardTitle>
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent>
