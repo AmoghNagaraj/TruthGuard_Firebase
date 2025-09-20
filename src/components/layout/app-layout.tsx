@@ -71,7 +71,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </SidebarContent>
         <SidebarFooter>
           <SidebarMenu>
-            <SidebarGroup>
+             <SidebarGroup>
               <SidebarGroupLabel>Support</SidebarGroupLabel>
               <SidebarGroupContent>
                 {secondaryNavItems.map((item) => (
