@@ -1,17 +1,15 @@
 "use server";
 
-import { analyzeThreat, ThreatAnalysisInput } from "@/ai/flows/threat-analysis-flow";
+import { analyzeNarrative, NarrativeAnalysisInput } from "@/ai/flows/narrative-analysis-flow";
 import { z } from "zod";
 
-const ThreatAnalysisFormSchema = z.object({
-  threatDescription: z.string().min(10, "Threat description must be at least 10 characters."),
-  logData: z.string().min(10, "Log data must be at least 10 characters."),
-  vulnerabilityData: z.string().optional(),
-  riskFactors: z.string().optional(),
+const NarrativeAnalysisFormSchema = z.object({
+  content: z.string().min(20, "Content must be at least 20 characters."),
+  source: z.string().min(3, "Source must be at least 3 characters."),
 });
 
-export async function handleThreatAnalysis(data: ThreatAnalysisInput) {
-  const validation = ThreatAnalysisFormSchema.safeParse(data);
+export async function handleNarrativeAnalysis(data: NarrativeAnalysisInput) {
+  const validation = NarrativeAnalysisFormSchema.safeParse(data);
   if (!validation.success) {
     return {
       success: false,
@@ -20,13 +18,13 @@ export async function handleThreatAnalysis(data: ThreatAnalysisInput) {
   }
 
   try {
-    const result = await analyzeThreat(data);
+    const result = await analyzeNarrative(data);
     return {
       success: true,
       data: result,
     };
   } catch (error) {
-    console.error("Error analyzing threat:", error);
+    console.error("Error analyzing narrative:", error);
     return {
       success: false,
       error: "An unexpected error occurred. Please try again.",

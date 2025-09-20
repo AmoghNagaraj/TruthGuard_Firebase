@@ -51,22 +51,21 @@ export default function RecentLogs() {
     setIsClient(true);
   }, []);
 
-
   return (
     <>
       <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
         <CardHeader>
-          <CardTitle>Recent Logs</CardTitle>
+          <CardTitle>Recent Narratives</CardTitle>
           <CardDescription>
-            A summary of the latest security events.
+            A summary of the latest identified narratives.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Severity</TableHead>
-                <TableHead>Source</TableHead>
+                <TableHead>Risk Level</TableHead>
+                <TableHead>Source Type</TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead className="text-right">Timestamp</TableHead>
               </TableRow>
@@ -102,7 +101,7 @@ export default function RecentLogs() {
       <Dialog open={!!selectedLog} onOpenChange={(isOpen) => !isOpen && setSelectedLog(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Log Details</DialogTitle>
+            <DialogTitle>Narrative Details</DialogTitle>
             <DialogDescription>
               {selectedLog?.timestamp
                 ? new Date(selectedLog.timestamp).toLocaleString()
@@ -111,7 +110,7 @@ export default function RecentLogs() {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <span className="text-right font-semibold">Severity</span>
+              <span className="text-right font-semibold">Risk Level</span>
               <div className="col-span-3">
               {selectedLog && (
                 <Badge variant={severityVariantMap[selectedLog.severity]} className={cn(selectedLog.severity === 'High' && 'bg-orange-500 text-white')}>
@@ -121,7 +120,7 @@ export default function RecentLogs() {
               </div>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <span className="text-right font-semibold">Source</span>
+              <span className="text-right font-semibold">Source Type</span>
               <span className="col-span-3">{selectedLog?.source}</span>
             </div>
             <div className="grid grid-cols-4 items-start gap-4">
@@ -129,7 +128,7 @@ export default function RecentLogs() {
               <p className="col-span-3">{selectedLog?.description}</p>
             </div>
             <div className="grid grid-cols-4 items-start gap-4">
-              <span className="text-right font-semibold">Details</span>
+              <span className="text-right font-semibold">AI Analysis</span>
               <p className="col-span-3 text-sm font-mono bg-muted p-2 rounded-md">
                 {selectedLog?.details}
               </p>

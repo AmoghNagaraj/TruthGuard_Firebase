@@ -23,54 +23,36 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { handleThreatAnalysis } from '@/app/actions';
-import type { ThreatAnalysisOutput } from '@/ai/flows/threat-analysis-flow';
-import { Loader2, Sparkles, CheckCircle, ShieldAlert } from 'lucide-react';
+import { handleNarrativeAnalysis } from '@/app/actions';
+import type { NarrativeAnalysisOutput } from '@/ai/flows/narrative-analysis-flow';
+import { Loader2, Sparkles, CheckCircle, MessageSquareWarning } from 'lucide-react';
 import { Progress } from '../ui/progress';
 import { cn } from '@/lib/utils';
 import { Separator } from '../ui/separator';
 
 const formSchema = z.object({
-  threatDescription: z.string().min(1, 'Threat description is required.'),
-  logData: z.string().min(1, 'Log data is required.'),
-  vulnerabilityData: z.string().optional(),
-  riskFactors: z.string().optional(),
+  content: z.string().min(1, 'Content is required.'),
+  source: z.string().min(1, 'Source is required.'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ThreatAnalysisCard() {
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<ThreatAnalysisOutput | null>(null);
+  const [result, setResult] = useState<NarrativeAnalysisOutput | null>(null);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      threatDescription: 'Multiple failed login attempts followed by successful login from a suspicious IP address.',
-      logData: '',
-      vulnerabilityData: 'CVE-2023-12345',
-      riskFactors: 'The user account has high privileges on a critical database server.',
+      content: 'BREAKING: Scientists have confirmed that household plants are actually alien listening devices sent to spy on us. The recent surge in houseplant popularity is a coordinated effort to install surveillance equipment in every home. #PlantSpies #AlienInvasion',
+      source: 'unverified-social-media-account.com',
     },
   });
-  
-  useEffect(() => {
-    const now = new Date();
-    const fiveSecondsAgo = new Date(now.getTime() - 5000);
-    const tenSecondsAgo = new Date(now.getTime() - 10000);
-
-    form.reset({
-        ...form.getValues(),
-        logData: `[${now.toISOString()}] Successful login for user 'admin' from 203.0.113.55
-[${fiveSecondsAgo.toISOString()}] Failed login for user 'admin' from 203.0.113.55
-[${tenSecondsAgo.toISOString()}] Failed login for user 'admin' from 203.0.113.55`
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     setResult(null);
-    const response = await handleThreatAnalysis(values);
+    const response = await handleNarrativeAnalysis(values);
     if (response.success && response.data) {
       setResult(response.data);
     } else {
@@ -90,10 +72,10 @@ export default function ThreatAnalysisCard() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Sparkles className="text-accent" />
-          AI Threat Analysis
+          AI Narrative Analysis
         </CardTitle>
         <CardDescription>
-          Generate an in-depth analysis and mitigation report for security threats.
+          Generate an in-depth analysis of online content for misinformation.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -101,13 +83,14 @@ export default function ThreatAnalysisCard() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="threatDescription"
+              name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Threat Description</FormLabel>
+                  <FormLabel>Content to Analyze</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="e.g., Multiple failed login attempts..."
+                      placeholder="Paste the article or post content here..."
+                      rows={8}
                       {...field}
                     />
                   </FormControl>
@@ -117,43 +100,12 @@ export default function ThreatAnalysisCard() {
             />
             <FormField
               control={form.control}
-              name="logData"
+              name="source"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Log Data</FormLabel>
+                  <FormLabel>Source</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="Paste relevant log data here"
-                      className="font-mono text-xs"
-                      rows={5}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="vulnerabilityData"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Vulnerability Data (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., CVE-2023-12345" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-             <FormField
-              control={form.control}
-              name="riskFactors"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Risk Factors (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., System hosts sensitive data" {...field} />
+                    <Input placeholder="e.g., news-website.com, @socialhandle" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -163,7 +115,7 @@ export default function ThreatAnalysisCard() {
               {loading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
-                'Analyze Threat'
+                'Analyze Content'
               )}
             </Button>
           </form>
@@ -171,7 +123,7 @@ export default function ThreatAnalysisCard() {
         {loading && (
             <div className="mt-6 flex flex-col items-center justify-center space-y-2">
                 <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">AI is analyzing the threat...</p>
+                <p className="text-sm text-muted-foreground">AI is analyzing the narrative...</p>
             </div>
         )}
         {result && (
@@ -180,27 +132,27 @@ export default function ThreatAnalysisCard() {
             <Separator />
              <div>
                 <div className="mb-2 flex justify-between items-baseline">
-                    <h4 className="text-sm font-medium text-muted-foreground">Severity Score</h4>
-                    <span className={cn("text-xl font-bold", getScoreColor(result.severityScore).replace('bg-','text-'))}>{result.severityScore} / 10</span>
+                    <h4 className="text-sm font-medium text-muted-foreground">Misinformation Risk Score</h4>
+                    <span className={cn("text-xl font-bold", getScoreColor(result.riskScore).replace('bg-','text-'))}>{result.riskScore} / 10</span>
                 </div>
-                <Progress value={result.severityScore * 10} className="h-2" indicatorClassName={getScoreColor(result.severityScore)} />
+                <Progress value={result.riskScore * 10} className="h-2" indicatorClassName={getScoreColor(result.riskScore)} />
             </div>
              <div>
-              <h4 className="font-medium">Threat Category</h4>
-              <p className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-md inline-block mt-1">{result.threatCategory}</p>
+              <h4 className="font-medium">Key Narrative</h4>
+              <p className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-md inline-block mt-1">{result.keyNarrative}</p>
             </div>
             <div>
-              <h4 className="font-medium">Executive Summary</h4>
-              <p className="text-sm text-muted-foreground">{result.executiveSummary}</p>
+              <h4 className="font-medium">Summary</h4>
+              <p className="text-sm text-muted-foreground">{result.analysisSummary}</p>
             </div>
              <div>
-              <h4 className="font-medium">Technical Analysis</h4>
-              <p className="text-sm text-muted-foreground">{result.technicalAnalysis}</p>
+              <h4 className="font-medium">Detailed Analysis</h4>
+              <p className="text-sm text-muted-foreground">{result.detailedAnalysis}</p>
             </div>
             <div>
-              <h4 className="font-medium">Mitigation Steps</h4>
+              <h4 className="font-medium">Counter Points</h4>
               <ul className="mt-2 space-y-2">
-                {result.mitigationSteps.map((step, index) => (
+                {result.counterPoints.map((step, index) => (
                   <li key={index} className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 flex-shrink-0" />
                     <span className="text-sm text-muted-foreground">{step}</span>
@@ -209,10 +161,10 @@ export default function ThreatAnalysisCard() {
               </ul>
             </div>
             <div>
-              <h4 className="font-medium">Incident Response Plan</h4>
+              <h4 className="font-medium">Telltale Signs</h4>
               <div className="flex items-start gap-2 mt-2">
-                <ShieldAlert className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">{result.incidentResponsePlan}</p>
+                <MessageSquareWarning className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
+                <p className="text-sm text-muted-foreground">{result.telltaleSigns.join(', ')}</p>
               </div>
             </div>
           </div>

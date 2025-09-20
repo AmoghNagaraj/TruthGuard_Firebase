@@ -5,8 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import AppLayout from '@/components/layout/app-layout';
 
 export const metadata: Metadata = {
-  title: 'SentinelView',
-  description: 'Real-time Security Audit Log and Monitoring Dashboard',
+  title: 'TruthGuard',
+  description: 'AI-Powered Disinformation Analysis Dashboard',
 };
 
 export default function RootLayout({

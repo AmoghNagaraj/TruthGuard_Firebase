@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { ShieldCheck, AlertTriangle, Server, Users } from "lucide-react";
+import { Bot, MessageSquareWarning, Newspaper, TrendingUp } from "lucide-react";
 
 export type StatCard = {
   title: string;
@@ -10,39 +10,39 @@ export type StatCard = {
 
 export const statsCards: StatCard[] = [
   {
-    title: "Events Analyzed",
-    value: "1,234,567",
-    change: "+12.5% from last week",
-    icon: ShieldCheck,
+    title: "Narratives Analyzed",
+    value: "1,284",
+    change: "+15.2% from last month",
+    icon: Bot,
   },
   {
-    title: "High-Severity Alerts",
-    value: "89",
-    change: "-2.1% from last week",
-    icon: AlertTriangle,
+    title: "High-Risk Narratives",
+    value: "73",
+    change: "-3.1% from last week",
+    icon: MessageSquareWarning,
   },
   {
-    title: "Systems Monitored",
-    value: "2,405",
-    change: "+50 new systems",
-    icon: Server,
+    title: "Sources Monitored",
+    value: "405",
+    change: "+12 new sources",
+    icon: Newspaper,
   },
   {
-    title: "Active Users",
-    value: "1,892",
-    change: "stable",
-    icon: Users,
+    title: "Engagement Trend",
+    value: "3.2M",
+    change: "+8.9% engagement",
+    icon: TrendingUp,
   },
 ];
 
 export const chartData = [
-  { date: "Mon", Low: 2000, Medium: 1500, High: 200, Critical: 50 },
-  { date: "Tue", Low: 2200, Medium: 1800, High: 250, Critical: 60 },
-  { date: "Wed", Low: 1900, Medium: 1600, High: 220, Critical: 45 },
-  { date: "Thu", Low: 2500, Medium: 2000, High: 300, Critical: 75 },
-  { date: "Fri", Low: 2800, Medium: 2200, High: 350, Critical: 90 },
-  { date: "Sat", Low: 3200, Medium: 2500, High: 400, Critical: 110 },
-  { date: "Sun", Low: 3000, Medium: 2300, High: 380, Critical: 95 },
+  { date: "Mon", Coordinated: 400, "Bot-like": 240, Authentic: 240, Satire: 100 },
+  { date: "Tue", Coordinated: 300, "Bot-like": 139, Authentic: 221, Satire: 120 },
+  { date: "Wed", Coordinated: 200, "Bot-like": 980, Authentic: 229, Satire: 80 },
+  { date: "Thu", Coordinated: 278, "Bot-like": 390, Authentic: 200, Satire: 150 },
+  { date: "Fri", Coordinated: 189, "Bot-like": 480, Authentic: 218, Satire: 60 },
+  { date: "Sat", Coordinated: 239, "Bot-like": 380, Authentic: 250, Satire: 110 },
+  { date: "Sun", Coordinated: 349, "Bot-like": 430, Authentic: 210, Satire: 90 },
 ];
 
 export type SecurityLog = {
@@ -59,40 +59,40 @@ export const recentLogs: SecurityLog[] = [
     id: "log-001",
     timestamp: "2024-07-31T12:00:00.000Z",
     severity: "Critical",
-    source: "prod-db-01",
-    description: "Multiple failed login attempts followed by successful login.",
-    details: "User 'admin' failed to login 15 times from IP 203.0.113.55 before a successful login. Potential brute-force attack.",
+    source: "Verified News Outlet",
+    description: "False narrative about election fraud rapidly gaining traction on social media.",
+    details: "A coordinated campaign is pushing a false story about voting machine manipulation, citing a debunked source. Engagement is growing at 200% per hour.",
   },
   {
     id: "log-002",
     timestamp: "2024-07-31T11:55:00.000Z",
     severity: "High",
-    source: "api-gateway",
-    description: "Unusual traffic pattern detected from a new ASN.",
-    details: "Traffic from AS6789 increased by 500% over a 10-minute period, targeting the /v1/users endpoint. Possible DDoS attempt or vulnerability scanning.",
+    source: "Social Media Platform",
+    description: "Bot network detected amplifying divisive content about public health.",
+    details: "A network of over 500 automated accounts has been identified posting and reposting misleading health advice from a single blog.",
   },
   {
     id: "log-003",
     timestamp: "2024-07-31T11:45:00.000Z",
     severity: "Medium",
-    source: "web-server-03",
-    description: "Outdated SSL certificate detected.",
-    details: "The SSL certificate for 'legacy.example.com' expired 2 days ago. This could lead to security warnings for users and potential MITM attacks.",
+    source: "Fringe Forum",
+    description: "Conspiracy theory linking 5G towers to climate change emerging.",
+    details: "A new narrative is taking hold in a niche online community, unsupported by any scientific evidence. Currently contained but has potential for wider spread.",
   },
   {
     id: "log-004",
     timestamp: "2024-07-31T11:30:00.000Z",
     severity: "Low",
-    source: "auth-service",
-    description: "User password reset initiated.",
-    details: "User 'j.doe' initiated a password reset from a known device. Standard procedure.",
+    source: "Fact-Checking Site",
+    description: "Satirical article being misinterpreted as genuine news.",
+    details: "An article from a known satire website is being shared without context, leading some users to believe its claims are real.",
   },
   {
     id: "log-005",
     timestamp: "2024-07-31T11:15:00.000Z",
     severity: "High",
-    source: "firewall-01",
-    description: "Port scan detected from external IP.",
-    details: "IP address 198.51.100.22 performed a sequential scan on ports 1-1024. The IP has been temporarily blocked.",
+    source: "State-Sponsored Outlet",
+    description: "Propaganda piece targeting international relations published.",
+    details: "A news outlet with known state ties has published a one-sided article aimed at influencing foreign public opinion. The narrative is being amplified by official accounts.",
   },
 ];

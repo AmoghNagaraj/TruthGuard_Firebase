@@ -19,18 +19,18 @@ import { chartData } from '@/lib/mock-data';
 import type { ChartConfig } from '@/components/ui/chart';
 
 const chartConfig = {
-  Low: { label: 'Low', color: 'hsl(var(--chart-3))' },
-  Medium: { label: 'Medium', color: 'hsl(var(--chart-4))' },
-  High: { label: 'High', color: 'hsl(var(--chart-2))' },
-  Critical: { label: 'Critical', color: 'hsl(var(--destructive))' },
+  Authentic: { label: 'Authentic', color: 'hsl(var(--chart-3))' },
+  Satire: { label: 'Satire', color: 'hsl(var(--chart-4))' },
+  "Bot-like": { label: 'Bot-like', color: 'hsl(var(--chart-2))' },
+  Coordinated: { label: 'Coordinated', color: 'hsl(var(--destructive))' },
 } satisfies ChartConfig;
 
 export default function EventsOverTimeChart() {
   return (
     <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
       <CardHeader>
-        <CardTitle>Events Over Time</CardTitle>
-        <CardDescription>Last 7 days</CardDescription>
+        <CardTitle>Narrative Activity</CardTitle>
+        <CardDescription>Last 7 days by content type</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -53,10 +53,10 @@ export default function EventsOverTimeChart() {
             <YAxis />
             <ChartTooltip content={<ChartTooltipContent />} />
             <ChartLegend content={<ChartLegendContent />} />
-            <Bar dataKey="Low" stackId="a" fill="var(--color-Low)" radius={[0, 0, 4, 4]} />
-            <Bar dataKey="Medium" stackId="a" fill="var(--color-Medium)" radius={[0, 0, 4, 4]} />
-            <Bar dataKey="High" stackId="a" fill="var(--color-High)" radius={[0, 0, 4, 4]} />
-            <Bar dataKey="Critical" stackId="a" fill="var(--color-Critical)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Authentic" stackId="a" fill="var(--color-Authentic)" radius={[0, 0, 4, 4]} />
+            <Bar dataKey="Satire" stackId="a" fill="var(--color-Satire)" radius={[0, 0, 4, 4]} />
+            <Bar dataKey="Bot-like" stackId="a" fill="var(--color-Bot-like)" radius={[0, 0, 4, 4]} />
+            <Bar dataKey="Coordinated" stackId="a" fill="var(--color-Coordinated)" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ChartContainer>
       </CardContent>
