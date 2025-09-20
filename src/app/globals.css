@@ -81,6 +81,30 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes float1 {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-30px) translateX(20px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
+
+  @keyframes float2 {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(30px) translateX(-20px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
 }
 
 .glass-card {
