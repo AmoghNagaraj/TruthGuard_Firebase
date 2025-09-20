@@ -13,7 +13,6 @@ import {
   SidebarInset,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarGroupContent,
 } from '@/components/ui/sidebar';
 import {
   AlertTriangle,
@@ -43,7 +42,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         <SidebarHeader>
           <div className="flex items-center gap-2">
             <SentinelViewLogo className="size-10 text-primary" />
-            <span className="font-headline text-lg font-semibold">
+            <span className="font-headline text-2xl font-bold">
               SentinelView
             </span>
           </div>
@@ -52,7 +51,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <SidebarMenu>
             <SidebarGroup>
               <SidebarGroupLabel>Menu</SidebarGroupLabel>
-              <SidebarGroupContent>
                 {mainNavItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
@@ -65,7 +63,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-              </SidebarGroupContent>
             </SidebarGroup>
           </SidebarMenu>
         </SidebarContent>
@@ -73,7 +70,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <SidebarMenu>
              <SidebarGroup>
               <SidebarGroupLabel>Support</SidebarGroupLabel>
-              <SidebarGroupContent>
                 {secondaryNavItems.map((item) => (
                   <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
@@ -86,7 +82,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-              </SidebarGroupContent>
             </SidebarGroup>
           </SidebarMenu>
           <div className="flex w-full items-center gap-3 overflow-hidden rounded-lg p-2 text-left text-sm bg-muted">
