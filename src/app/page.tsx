@@ -2,7 +2,7 @@ import DashboardHeader from '@/components/dashboard/header';
 import StatsCards from '@/components/dashboard/stats-cards';
 import EventsOverTimeChart from '@/components/dashboard/events-over-time-chart';
 import RecentLogs from '@/components/dashboard/recent-logs';
-import ThreatPrioritizationCard from '@/components/dashboard/threat-prioritization-card';
+import ThreatAnalysisCard from '@/components/dashboard/threat-analysis-card';
 
 export default function DashboardPage() {
   return (
@@ -15,7 +15,7 @@ export default function DashboardPage() {
           <RecentLogs />
         </div>
         <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-1">
-          <ThreatPrioritizationCard />
+          <ThreatAnalysisCard />
         </div>
       </main>
     </div>

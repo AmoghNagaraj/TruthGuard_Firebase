@@ -9,8 +9,12 @@ import { statsCards } from '@/lib/mock-data';
 export default function StatsCards() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      {statsCards.map((card) => (
-        <Card key={card.title}>
+      {statsCards.map((card, index) => (
+        <Card
+          key={card.title}
+          className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">{card.title}</CardTitle>
             <card.icon className="h-4 w-4 text-muted-foreground" />

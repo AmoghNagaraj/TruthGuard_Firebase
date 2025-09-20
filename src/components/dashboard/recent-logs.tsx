@@ -48,7 +48,7 @@ export default function RecentLogs() {
 
   return (
     <>
-      <Card>
+      <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
         <CardHeader>
           <CardTitle className="font-headline">Recent Logs</CardTitle>
           <CardDescription>
