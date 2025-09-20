@@ -19,9 +19,9 @@ import { chartData } from '@/lib/mock-data';
 import type { ChartConfig } from '@/components/ui/chart';
 
 const chartConfig = {
-  Low: { label: 'Low', color: 'hsl(var(--chart-1))' },
-  Medium: { label: 'Medium', color: 'hsl(var(--chart-3))' },
-  High: { label: 'High', color: 'hsl(var(--chart-4))' },
+  Low: { label: 'Low', color: 'hsl(var(--chart-3))' },
+  Medium: { label: 'Medium', color: 'hsl(var(--chart-4))' },
+  High: { label: 'High', color: 'hsl(var(--chart-2))' },
   Critical: { label: 'Critical', color: 'hsl(var(--destructive))' },
 } satisfies ChartConfig;
 

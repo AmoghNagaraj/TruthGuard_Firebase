@@ -13,8 +13,9 @@ export function SentinelViewLogo(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <title>SentinelView Logo</title>
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-      <circle cx="12" cy="12" r="3" />
+      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" />
+      <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+      <path d="M12 12v6" />
     </svg>
   );
 }

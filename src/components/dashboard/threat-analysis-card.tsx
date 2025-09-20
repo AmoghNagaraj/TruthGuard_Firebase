@@ -74,10 +74,10 @@ export default function ThreatAnalysisCard() {
   }
 
   return (
-    <Card className="transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '300ms' }}>
+    <Card className="transition-all duration-300 hover:shadow-lg animate-fade-in border-accent/50" style={{ animationDelay: '300ms' }}>
       <CardHeader>
         <CardTitle className="font-headline flex items-center gap-2">
-          <Sparkles className="text-primary" />
+          <Sparkles className="text-accent" />
           AI Threat Analysis
         </CardTitle>
         <CardDescription>
@@ -147,7 +147,7 @@ export default function ThreatAnalysisCard() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={loading} className="w-full">
+            <Button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
               {loading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
@@ -199,7 +199,7 @@ export default function ThreatAnalysisCard() {
             <div>
               <h4 className="font-medium">Incident Response Plan</h4>
               <div className="flex items-start gap-2 mt-2">
-                <ShieldAlert className="h-4 w-4 mt-0.5 text-blue-500 flex-shrink-0" />
+                <ShieldAlert className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
                 <p className="text-sm text-muted-foreground">{result.incidentResponsePlan}</p>
               </div>
             </div>
