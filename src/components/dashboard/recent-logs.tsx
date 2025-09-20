@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -45,6 +45,12 @@ const severityColorMap = {
 
 export default function RecentLogs() {
   const [selectedLog, setSelectedLog] = useState<SecurityLog | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
 
   return (
     <>
@@ -83,9 +89,9 @@ export default function RecentLogs() {
                   <TableCell className="font-medium">{log.source}</TableCell>
                   <TableCell className="truncate max-w-xs">{log.description}</TableCell>
                   <TableCell className="text-right">
-                    {formatDistanceToNow(new Date(log.timestamp), {
+                    {isClient ? formatDistanceToNow(new Date(log.timestamp), {
                       addSuffix: true,
-                    })}
+                    }) : '...'}
                   </TableCell>
                 </TableRow>
               ))}

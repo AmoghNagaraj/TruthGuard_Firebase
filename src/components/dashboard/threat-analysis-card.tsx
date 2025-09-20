@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -42,18 +42,30 @@ type FormValues = z.infer<typeof formSchema>;
 export default function ThreatAnalysisCard() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ThreatAnalysisOutput | null>(null);
-
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       threatDescription: 'Multiple failed login attempts followed by successful login from a suspicious IP address.',
-      logData: `[2024-07-31T12:00:00.000Z] Failed login for user 'admin' from 203.0.113.55
-[2024-07-31T12:00:05.000Z] Failed login for user 'admin' from 203.0.113.55
-[2024-07-31T12:00:10.000Z] Successful login for user 'admin' from 203.0.113.55`,
+      logData: '',
       vulnerabilityData: 'CVE-2023-12345',
       riskFactors: 'The user account has high privileges on a critical database server.',
     },
   });
+  
+  useEffect(() => {
+    const now = new Date();
+    const fiveSecondsAgo = new Date(now.getTime() - 5000);
+    const tenSecondsAgo = new Date(now.getTime() - 10000);
+
+    form.reset({
+        ...form.getValues(),
+        logData: `[${now.toISOString()}] Successful login for user 'admin' from 203.0.113.55
+[${fiveSecondsAgo.toISOString()}] Failed login for user 'admin' from 203.0.113.55
+[${tenSecondsAgo.toISOString()}] Failed login for user 'admin' from 203.0.113.55`
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
