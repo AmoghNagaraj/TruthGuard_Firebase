@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
+import { User, Bell, AlertTriangle } from "lucide-react";
 
 export default function SettingsPage() {
   return (
@@ -12,11 +12,14 @@ export default function SettingsPage() {
         <h1 className="text-4xl font-bold font-headline text-foreground">Settings</h1>
         <p className="text-muted-foreground mt-2">Manage your account and application settings.</p>
       </header>
-      <div className="space-y-8">
-        <Card>
-            <CardHeader>
-                <CardTitle>Profile</CardTitle>
-                <CardDescription>Update your personal information.</CardDescription>
+      <div className="space-y-8 max-w-4xl mx-auto">
+        <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
+            <CardHeader className="flex flex-row items-center gap-4">
+                <User className="w-8 h-8 text-primary" />
+                <div>
+                    <CardTitle className="font-headline text-xl">Profile</CardTitle>
+                    <CardDescription>Update your personal information.</CardDescription>
+                </div>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -37,10 +40,13 @@ export default function SettingsPage() {
             </CardContent>
         </Card>
         
-        <Card>
-            <CardHeader>
-                <CardTitle>Notifications</CardTitle>
-                <CardDescription>Manage how you receive notifications.</CardDescription>
+        <Card className="transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <CardHeader className="flex flex-row items-center gap-4">
+                <Bell className="w-8 h-8 text-accent" />
+                <div>
+                    <CardTitle className="font-headline text-xl">Notifications</CardTitle>
+                    <CardDescription>Manage how you receive notifications.</CardDescription>
+                </div>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="flex items-center justify-between space-x-2 rounded-lg border p-4">
@@ -64,13 +70,16 @@ export default function SettingsPage() {
             </CardContent>
         </Card>
 
-        <Card>
-            <CardHeader>
-                <CardTitle className="text-destructive">Danger Zone</CardTitle>
-                <CardDescription>These actions are permanent and cannot be undone.</CardDescription>
+        <Card className="border-destructive/50 transition-all duration-300 hover:bg-destructive/5 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <CardHeader className="flex flex-row items-center gap-4">
+                <AlertTriangle className="w-8 h-8 text-destructive" />
+                <div>
+                    <CardTitle className="font-headline text-xl text-destructive">Danger Zone</CardTitle>
+                    <CardDescription>These actions are permanent and cannot be undone.</CardDescription>
+                </div>
             </CardHeader>
             <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between rounded-lg border border-destructive/20 p-4">
                     <div>
                         <p className="font-medium">Delete Account</p>
                         <p className="text-sm text-muted-foreground">Permanently remove your account and all data.</p>
