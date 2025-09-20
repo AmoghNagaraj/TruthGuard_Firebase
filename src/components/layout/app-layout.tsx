@@ -11,9 +11,9 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarInset,
-  SidebarSeparator,
   SidebarGroup,
   SidebarGroupLabel,
+  SidebarGroupContent,
 } from '@/components/ui/sidebar';
 import {
   AlertTriangle,
@@ -21,11 +21,9 @@ import {
   LayoutDashboard,
   ScrollText,
   Settings,
-  ShieldCheck,
 } from 'lucide-react';
 import { SentinelViewLogo } from '@/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '../ui/button';
 
 const mainNavItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
@@ -34,9 +32,7 @@ const mainNavItems = [
   { href: '/reports', icon: FilePieChart, label: 'Reports' },
 ];
 
-const secondaryNavItems = [
-    { href: '/settings', icon: Settings, label: 'Settings' },
-];
+const secondaryNavItems = [{ href: '/settings', icon: Settings, label: 'Settings' }];
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -46,43 +42,52 @@ export default function AppLayout({ children }: { children: ReactNode }) {
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-2">
-            <SentinelViewLogo className="size-8 text-primary" />
+            <SentinelViewLogo className="size-10 text-primary" />
             <span className="font-headline text-lg font-semibold">
               SentinelView
             </span>
           </div>
         </SidebarHeader>
         <SidebarContent>
-            <SidebarMenu>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarGroupLabel>Menu</SidebarGroupLabel>
+              <SidebarGroupContent>
                 {mainNavItems.map((item) => (
-                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
-                    href={item.href}
-                    isActive={pathname === item.href}
-                    tooltip={{ children: item.label }}
+                      href={item.href}
+                      isActive={pathname === item.href}
+                      tooltip={{ children: item.label }}
                     >
-                    <item.icon />
-                    <span>{item.label}</span>
+                      <item.icon />
+                      <span>{item.label}</span>
                     </SidebarMenuButton>
-                </SidebarMenuItem>
+                  </SidebarMenuItem>
                 ))}
-            </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
-            <SidebarMenu>
-                 {secondaryNavItems.map((item) => (
-                <SidebarMenuItem key={item.label}>
+          <SidebarMenu>
+            <SidebarGroup>
+              <SidebarGroupContent>
+                {secondaryNavItems.map((item) => (
+                  <SidebarMenuItem key={item.label}>
                     <SidebarMenuButton
-                    href={item.href}
-                    isActive={pathname === item.href}
-                    tooltip={{ children: item.label }}
+                      href={item.href}
+                      isActive={pathname === item.href}
+                      tooltip={{ children: item.label }}
                     >
-                    <item.icon />
-                    <span>{item.label}</span>
+                      <item.icon />
+                      <span>{item.label}</span>
                     </SidebarMenuButton>
-                </SidebarMenuItem>
+                  </SidebarMenuItem>
                 ))}
-            </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarMenu>
           <div className="flex w-full items-center gap-3 overflow-hidden rounded-lg p-2 text-left text-sm bg-muted">
             <Avatar className="size-9">
               <AvatarImage
@@ -101,11 +106,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset>
-        <div className="h-full w-full">
-            {children}
-        </div>
-      </SidebarInset>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
 }
