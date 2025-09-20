@@ -57,7 +57,7 @@ export type SecurityLog = {
 export const recentLogs: SecurityLog[] = [
   {
     id: "log-001",
-    timestamp: new Date(Date.now() - 1 * 60 * 1000).toISOString(),
+    timestamp: "2024-07-31T12:00:00.000Z",
     severity: "Critical",
     source: "prod-db-01",
     description: "Multiple failed login attempts followed by successful login.",
@@ -65,7 +65,7 @@ export const recentLogs: SecurityLog[] = [
   },
   {
     id: "log-002",
-    timestamp: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
+    timestamp: "2024-07-31T11:55:00.000Z",
     severity: "High",
     source: "api-gateway",
     description: "Unusual traffic pattern detected from a new ASN.",
@@ -73,7 +73,7 @@ export const recentLogs: SecurityLog[] = [
   },
   {
     id: "log-003",
-    timestamp: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+    timestamp: "2024-07-31T11:45:00.000Z",
     severity: "Medium",
     source: "web-server-03",
     description: "Outdated SSL certificate detected.",
@@ -81,7 +81,7 @@ export const recentLogs: SecurityLog[] = [
   },
   {
     id: "log-004",
-    timestamp: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
+    timestamp: "2024-07-31T11:30:00.000Z",
     severity: "Low",
     source: "auth-service",
     description: "User password reset initiated.",
@@ -89,7 +89,7 @@ export const recentLogs: SecurityLog[] = [
   },
   {
     id: "log-005",
-    timestamp: new Date(Date.now() - 45 * 60 * 1000).toISOString(),
+    timestamp: "2024-07-31T11:15:00.000Z",
     severity: "High",
     source: "firewall-01",
     description: "Port scan detected from external IP.",

@@ -47,7 +47,9 @@ export default function ThreatAnalysisCard() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       threatDescription: 'Multiple failed login attempts followed by successful login from a suspicious IP address.',
-      logData: `[${new Date().toISOString()}] Failed login for user 'admin' from 203.0.113.55\n[${new Date().toISOString()}] Failed login for user 'admin' from 203.0.113.55\n[${new Date().toISOString()}] Successful login for user 'admin' from 203.0.113.55`,
+      logData: `[2024-07-31T12:00:00.000Z] Failed login for user 'admin' from 203.0.113.55
+[2024-07-31T12:00:05.000Z] Failed login for user 'admin' from 203.0.113.55
+[2024-07-31T12:00:10.000Z] Successful login for user 'admin' from 203.0.113.55`,
       vulnerabilityData: 'CVE-2023-12345',
       riskFactors: 'The user account has high privileges on a critical database server.',
     },
