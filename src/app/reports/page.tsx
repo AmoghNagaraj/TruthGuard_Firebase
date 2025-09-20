@@ -1,26 +1,50 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { FilePieChart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { FilePieChart, CalendarClock, ShieldAlert } from "lucide-react";
+
+const reportCards = [
+    {
+        icon: <FilePieChart className="w-8 h-8 text-primary" />,
+        title: "Weekly Security Summary",
+        description: "Generate a comprehensive overview of the last 7 days of activity, including key events and trends.",
+        buttonText: "Generate Weekly Report"
+    },
+    {
+        icon: <CalendarClock className="w-8 h-8 text-accent" />,
+        title: "Custom Date Range Report",
+        description: "Select a specific date range to generate a detailed report of all logged events and alerts.",
+        buttonText: "Select Dates"
+    },
+    {
+        icon: <ShieldAlert className="w-8 h-8 text-destructive" />,
+        title: "Vulnerability Assessment",
+        description: "Create a report detailing all identified vulnerabilities and recommended mitigation steps.",
+        buttonText: "Run Assessment"
+    }
+]
 
 export default function ReportsPage() {
   return (
-    <div className="flex flex-col h-screen bg-background p-4 sm:p-6">
-       <header className="py-4">
-        <h1 className="text-3xl font-bold font-headline text-foreground">Reports</h1>
-        <p className="text-muted-foreground">Generate and view security reports.</p>
+    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+       <header className="pb-8 pt-4">
+        <h1 className="text-4xl font-bold font-headline text-foreground">Reports</h1>
+        <p className="text-muted-foreground mt-2">Generate and view historical security reports.</p>
       </header>
-      <div className="flex-1 flex items-center justify-center">
-        <Card className="w-full max-w-lg text-center">
-          <CardHeader>
-            <div className="flex justify-center mb-4">
-                <FilePieChart className="w-12 h-12 text-primary" />
-            </div>
-            <CardTitle className="font-headline">Reporting Dashboard</CardTitle>
-            <CardDescription>This section is under construction.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">Report generation and analytics will be available here soon.</p>
-          </CardContent>
-        </Card>
+      <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
+        {reportCards.map((report, index) => (
+            <Card key={index} className="flex flex-col transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                <CardHeader>
+                    <div className="flex items-center gap-4">
+                        {report.icon}
+                        <CardTitle className="font-headline text-xl">{report.title}</CardTitle>
+                    </div>
+                    <CardDescription className="pt-2">{report.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="mt-auto">
+                    <Button className="w-full">{report.buttonText}</Button>
+                </CardContent>
+            </Card>
+        ))}
       </div>
     </div>
   );

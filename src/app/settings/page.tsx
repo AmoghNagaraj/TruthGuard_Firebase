@@ -1,24 +1,82 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Separator } from "@/components/ui/separator";
 
 export default function SettingsPage() {
   return (
-    <div className="flex flex-col h-screen bg-background p-4 sm:p-6">
-       <header className="py-4">
-        <h1 className="text-3xl font-bold font-headline text-foreground">Settings</h1>
-        <p className="text-muted-foreground">Configure your application settings.</p>
+    <div className="flex flex-col h-full bg-background p-4 sm:p-6 lg:p-8">
+       <header className="pb-8 pt-4">
+        <h1 className="text-4xl font-bold font-headline text-foreground">Settings</h1>
+        <p className="text-muted-foreground mt-2">Manage your account and application settings.</p>
       </header>
-      <div className="flex-1 flex items-center justify-center">
-        <Card className="w-full max-w-lg text-center">
+      <div className="space-y-8">
+        <Card>
             <CardHeader>
-                <div className="flex justify-center mb-4">
-                    <Settings className="w-12 h-12 text-accent animate-spin" style={{ animationDuration: '5s' }} />
-                </div>
-                <CardTitle className="font-headline">Settings</CardTitle>
-                <CardDescription>This section is under construction.</CardDescription>
+                <CardTitle>Profile</CardTitle>
+                <CardDescription>Update your personal information.</CardDescription>
             </CardHeader>
-            <CardContent>
-                <p className="text-muted-foreground">Configuration options will be available here soon.</p>
+            <CardContent className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input id="firstName" defaultValue="Admin" />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="lastName">Last Name</Label>
+                        <Input id="lastName" defaultValue="User" />
+                    </div>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" defaultValue="admin@sentinelview.com" />
+                </div>
+                <Button>Update Profile</Button>
+            </CardContent>
+        </Card>
+        
+        <Card>
+            <CardHeader>
+                <CardTitle>Notifications</CardTitle>
+                <CardDescription>Manage how you receive notifications.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                <div className="flex items-center justify-between space-x-2 rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                        <Label className="text-base">Email Notifications</Label>
+                        <p className="text-sm text-muted-foreground">
+                            Receive an email for critical security alerts.
+                        </p>
+                    </div>
+                    <Switch defaultChecked />
+                </div>
+                 <div className="flex items-center justify-between space-x-2 rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                        <Label className="text-base">Push Notifications</Label>
+                        <p className="text-sm text-muted-foreground">
+                           Get real-time alerts on your mobile device.
+                        </p>
+                    </div>
+                    <Switch />
+                </div>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle className="text-destructive">Danger Zone</CardTitle>
+                <CardDescription>These actions are permanent and cannot be undone.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <p className="font-medium">Delete Account</p>
+                        <p className="text-sm text-muted-foreground">Permanently remove your account and all data.</p>
+                    </div>
+                    <Button variant="destructive">Delete Account</Button>
+                </div>
             </CardContent>
         </Card>
       </div>

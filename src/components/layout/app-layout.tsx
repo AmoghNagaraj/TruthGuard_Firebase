@@ -11,6 +11,9 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarInset,
+  SidebarSeparator,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import {
   AlertTriangle,
@@ -18,16 +21,21 @@ import {
   LayoutDashboard,
   ScrollText,
   Settings,
+  ShieldCheck,
 } from 'lucide-react';
 import { SentinelViewLogo } from '@/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '../ui/button';
 
-const navItems = [
+const mainNavItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/logs', icon: ScrollText, label: 'Logs' },
   { href: '/alerts', icon: AlertTriangle, label: 'Alerts' },
   { href: '/reports', icon: FilePieChart, label: 'Reports' },
-  { href: '/settings', icon: Settings, label: 'Settings' },
+];
+
+const secondaryNavItems = [
+    { href: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export default function AppLayout({ children }: { children: ReactNode }) {
@@ -45,24 +53,38 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           </div>
         </SidebarHeader>
         <SidebarContent>
-          <SidebarMenu>
-            {navItems.map((item) => (
-              <SidebarMenuItem key={item.label}>
-                <SidebarMenuButton
-                  href={item.href}
-                  isActive={pathname === item.href}
-                  tooltip={{ children: item.label }}
-                >
-                  <item.icon />
-                  <span>{item.label}</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
+            <SidebarMenu>
+                {mainNavItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton
+                    href={item.href}
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                    >
+                    <item.icon />
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
-          <div className="flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm">
-            <Avatar className="size-8">
+            <SidebarMenu>
+                 {secondaryNavItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton
+                    href={item.href}
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label }}
+                    >
+                    <item.icon />
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+          <div className="flex w-full items-center gap-3 overflow-hidden rounded-lg p-2 text-left text-sm bg-muted">
+            <Avatar className="size-9">
               <AvatarImage
                 src="https://picsum.photos/seed/avatar/100/100"
                 alt="User Avatar"
@@ -71,7 +93,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
               <AvatarFallback>AV</AvatarFallback>
             </Avatar>
             <div className="flex flex-col truncate">
-              <span className="font-medium">Admin User</span>
+              <span className="font-semibold">Admin User</span>
               <span className="text-xs text-muted-foreground">
                 admin@sentinelview.com
               </span>
@@ -80,7 +102,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        {children}
+        <div className="h-full w-full">
+            {children}
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
