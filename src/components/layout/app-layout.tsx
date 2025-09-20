@@ -1,5 +1,6 @@
 'use client';
 import type { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   SidebarProvider,
   Sidebar,
@@ -22,14 +23,16 @@ import { SentinelViewLogo } from '@/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const navItems = [
-  { href: '#', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '#', icon: ScrollText, label: 'Logs' },
-  { href: '#', icon: AlertTriangle, label: 'Alerts' },
-  { href: '#', icon: FilePieChart, label: 'Reports' },
-  { href: '#', icon: Settings, label: 'Settings' },
+  { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/logs', icon: ScrollText, label: 'Logs' },
+  { href: '/alerts', icon: AlertTriangle, label: 'Alerts' },
+  { href: '/reports', icon: FilePieChart, label: 'Reports' },
+  { href: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export default function AppLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <SidebarProvider>
       <Sidebar>
@@ -43,10 +46,11 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton
-                  isActive={index === 0}
+                  href={item.href}
+                  isActive={pathname === item.href}
                   tooltip={{ children: item.label }}
                 >
                   <item.icon />
@@ -76,7 +80,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <div className="p-4 sm:p-6">{children}</div>
+        {children}
       </SidebarInset>
     </SidebarProvider>
   );
